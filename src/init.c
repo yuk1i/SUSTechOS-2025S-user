@@ -23,15 +23,17 @@ int main(void) {
         for (;;) {
             // this call to wait() returns if the shell exits,
             // or if a parentless process exits.
-            wpid = wait(pid, (int *)0);
+            wpid = wait(-1, (int *)0);
             if (wpid == pid) {
                 // the shell exited; restart it.
+                printf("init: sh exited, restarting...\n");
                 break;
             } else if (wpid < 0) {
                 printf("init: wait returned an error\n");
                 exit(1);
             } else {
                 // it was a parentless process; do nothing.
+                printf("init: wait a parentless process\n");
             }
         }
     }

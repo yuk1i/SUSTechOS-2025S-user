@@ -56,10 +56,11 @@ void parse_argv() {
 char *prompt = "sh >> ";
 
 int main() {
-    printf("%s", prompt);
+    stdout_nobuf();
     static char buf[200];
-    static char* argv[32];
+    static char *argv[32];
     while (1) {
+        printf("%s", prompt);
         gets(buf, sizeof(buf));
         // remove the last \r or \n
         int len = strlen(buf);
@@ -70,7 +71,7 @@ int main() {
             exit(0);
         }
         int argc = 0;
-        char *s = buf;
+        char *s  = buf;
         for (;;) {
             while (*s == ' ') {
                 *(s++) = 0;
@@ -88,12 +89,12 @@ int main() {
         int pid = fork();
         if (pid == 0) {
             exec(argv[0], argv);
-            printf("sh> exec %s failed\n", argv[0]);
+            printf("sh > exec %s failed\n", argv[0]);
             exit(-1);
         } else {
             int code;
             wait(pid, &code);
-            printf("sh> child %d exit with code %d\n", pid, code);
+            printf("sh > child %d exit with code %d\n", pid, code);
         }
     }
     return 0;

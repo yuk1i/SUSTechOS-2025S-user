@@ -21,6 +21,8 @@ int atoi(const char *);
 // printf.c
 void fprintf(int, const char *, ...);
 void printf(const char *, ...);
+void stdout_flush(void);
+void stdout_nobuf(void);
 
 // umalloc.c
 void *malloc(uint);

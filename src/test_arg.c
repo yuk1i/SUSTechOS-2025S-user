@@ -1,5 +1,3 @@
-// init: The initial user-level program
-
 #include "../lib/user.h"
 
 int main(int argc, char *argv[]) {
