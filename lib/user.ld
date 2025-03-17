@@ -4,7 +4,7 @@ ENTRY(__start_main)
 PHDRS
 {
   text      PT_LOAD FLAGS (5); /* 0x5 -> RX */
-  rodata    PT_LOAD FLAGS (4); /* 0x6 -> RW */
+  rodata    PT_LOAD FLAGS (4); /* 0x4 -> RO */
   data      PT_LOAD FLAGS (6); /* 0x6 -> RW */
 }
 

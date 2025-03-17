@@ -33,7 +33,7 @@ int main(void) {
                 exit(1);
             } else {
                 // it was a parentless process; do nothing.
-                printf("init: wait a parentless process\n");
+                printf("init: wait a parentless process %d\n", wpid);
             }
         }
     }
